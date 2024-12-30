@@ -1,4 +1,18 @@
-Explanation:
+### To use this example:
+
+1. Install RabbitMQ on your target systems or in a separate container.
+2. Install and configure the rabbitmqadmin command-line tool.
+3. Create an exchange named my_exchange in RabbitMQ.
+4. Run the first playbook. This will create the file and publish a message to RabbitMQ.
+5. The second playbook will automatically trigger and log the event.
+
+###  Note:
+
+This is a simplified example. You can adapt it to more complex scenarios by:
+Using different message queues and routing keys.
+Implementing more sophisticated event handling logic.
+Integrating with other systems and applications.
+
 
 1. First Playbook:
 
