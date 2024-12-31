@@ -1,6 +1,16 @@
-#### Setting up an event-driven system using Ansible Rulebook:
+### Setting up an event-driven system using Ansible Rulebook to Create and Configure Multipass Vms
 
-1. Install necessary software: Install Java, Python, pip3, and the required Ansible packages.
+##### Requirements
+
+1. Ubuntu or Debian  with  Multipass installed
+-  [To install Multipass Refer to official documentation](https://canonical.com/multipass/install)
+
+2. ansible
+-  [To install Ansible Refer to official documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+
+
+2. Install necessary software:
+- Install Java, Python, pip3, and the required Ansible packages.
 
 ``` shell
 sudo apt-get --assume-yes install openjdk-17-jdk python3-pip
@@ -9,14 +19,14 @@ export PATH=$PATH:~/.local/bin
 pip3 install ansible ansible-rulebook ansible-runner
 
 ```
-2. Start the Ansible Rulebook engine: Run the ansible-rulebook command to start listening for events.
+3. Start the Ansible Rulebook engine: Run the ansible-rulebook command to start listening for events.
 
 ``` shell
 ansible-rulebook --rulebook webhook-example.yml -i inventory/inventory.yml --verbose
 
 ```
 
-3. Trigger an event: Send a POST request to the specified endpoint.
+5. Trigger an event: Send a POST request to the specified endpoint.
 This will trigger the execution of the defined Ansible playbook, demonstrating a simple event-driven automation scenario.
 
 
