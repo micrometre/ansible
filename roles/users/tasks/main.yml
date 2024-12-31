@@ -25,8 +25,8 @@
 
 
 
-- name: allow 'user dell' to have passwordless sudo
+- name: allow 'user ubuntu' to have passwordless sudo
   lineinfile:
     dest: /etc/sudoers
-    line: 'dell ALL=(ALL) NOPASSWD: ALL'
+    line: 'ubuntu ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'

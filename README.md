@@ -44,7 +44,7 @@ This will trigger the execution of the defined Ansible playbook, demonstrating a
 3. Users
       - Create a new regular user with sudo privileges	
       - Set authorized key for remote user	
-      - allow 'user dell' to have passwordless sudo	
+      - allow 'user ubuntu' to have passwordless sudo	
 4. docker
       - Install Docker packages.	
       - Install docker-compose-plugin (with downgrade option).
