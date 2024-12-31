@@ -1,0 +1,10 @@
+- name: Log the event
+  debug:
+    msg: "Running tasks via REST/API"
+- name: Create a Multipass VM
+  theko2fi.multipass.multipass_vm:
+    name: microanpr
+    cpus: 2
+    memory: 2G
+    disk: 8G
+    state: started

@@ -1,0 +1,6 @@
+- name: playbook for localhost
+  hosts: localhost
+  remote_user: ubuntu
+  roles:
+    - multipass
+  tags: setup
