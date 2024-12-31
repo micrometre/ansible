@@ -3,8 +3,14 @@
     msg: "Running tasks via REST/API"
 - name: Create a Multipass VM
   theko2fi.multipass.multipass_vm:
-    name: microanpr
+    name: foo
     cpus: 2
     memory: 2G
-    disk: 8G
+    disk: 18G
     state: started
+- name: Add the VM to the inventory
+  ansible.builtin.add_host:
+    name: foo
+    ansible_host: foo
+    ansible_connection: theko2fi.multipass.multipass
+    ansible_python_interpreter: '/usr/bin/python3'

@@ -1,0 +1,6 @@
+all:
+  hosts:
+    microanpr:  
+      ansible_host: microanpr
+      ansible_connection: theko2fi.multipass.multipass
+      ansible_python_interpreter: /usr/bin/python3

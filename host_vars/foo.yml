@@ -1,6 +1,0 @@
----
-ansible_user: "ubuntu" 
-gather_facts: yes
-ansible_host: foo
-ansible_connection: theko2fi.multipass.multipass
-ansible_python_interpreter: /usr/bin/python3
