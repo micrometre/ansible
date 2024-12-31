@@ -23,6 +23,20 @@ This will trigger the execution of the defined Ansible playbook, demonstrating a
 ``` shell
 	curl -H 'Content-Type: application/json' -d "{\"message\": \"Ansible is super cool\"}" 127.0.0.1:5000/endpoint
 ```
+ ### Ansible Roles included
+
+
+1. multipass  
+      - Create a Multipass VM	 
+2. common 
+      - Update and upgarade System  
+      - Install required system packages	TAGS: [setupVms]
+      users : Create a new regular user with sudo privileges	TAGS: [setupVms]
+      users : Set authorized key for remote user	TAGS: [setupVms]
+      users : allow 'user dell' to have passwordless sudo	TAGS: [setupVms]
+      docker : Install Docker packages.	TAGS: [setupVms]
+      docker : Install docker-compose-plugin (with downgrade option).	TAGS: [setupVms]
+
 
 
 #### note
