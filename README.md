@@ -1,81 +1,10 @@
-### To use this example:
+### Requirements
 
-1. Install RabbitMQ on your target systems or in a separate container.
-2. Install and configure the rabbitmqadmin command-line tool.
-3. Create an exchange named my_exchange in RabbitMQ.
-4. Run the first playbook. This will create the file and publish a message to RabbitMQ.
-5. The second playbook will automatically trigger and log the event.
+``` shell
+sudo apt-get --assume-yes install openjdk-17-jdk python3-pip
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export PATH=$PATH:~/.local/bin
+pip3 install ansible ansible-rulebook ansible-runner
 
-###  Note:
-
-This is a simplified example. You can adapt it to more complex scenarios by:
-Using different message queues and routing keys.
-Implementing more sophisticated event handling logic.
-Integrating with other systems and applications.
-
-
-1. First Playbook:
-
-- hosts: all: This playbook will run on all targeted hosts.
-- become: true: Execute tasks with elevated privileges (e.g., root).
-- tasks:
-  - Create a file:
-    - file module creates a file named /tmp/my_file.
-  - Publish a message:
-    - wait_for_connection ensures a connection to the RabbitMQ server (rabbitmq) is established before proceeding.
-    - delegate_to: localhost executes the local_action on the local host (where Ansible is running).
-    - local_action: shell executes a shell command.
-    - args:
-      - rabbitmqadmin: The RabbitMQ administration command-line tool.
-      - publish: The command to publish a message.
-      - exchange=my_exchange: Specifies the exchange name.
-      - routing_key=my_routing_key: Specifies the routing key for the message.
-      - payload=\'{"message": "File created"}\': The message payload in JSON format.
-
-```yaml
-- hosts: all
-  become: true
-  tasks:
-    - name: Create a file
-      file:
-        path: /tmp/my_file
-        state: touch
-
-    - name: Publish a message to the message queue
-      wait_for_connection:
-        host: "rabbitmq" 
-        port: 5672 
-        delay: 5 
-        timeout: 10 
-      delegate_to: localhost
-      local_action: 
-        module: shell
-        args:
-          - 'rabbitmqadmin publish exchange=my_exchange routing_key=my_routing_key payload=\'{"message": "File created"}\''
-'''        
-```
-
-2. Second Playbook:
-
-- hosts: all: This playbook will run on all targeted hosts.
-- become: true: Execute tasks with elevated privileges.
-- triggers:
-  - all: changed: This trigger will start this playbook whenever any change occurs in the first playbook.
-  - tasks:
-    - Log the event:
-      - debug module logs a message to the Ansible console.
-
-
-
-```yaml
-
-- hosts: all
-  become: true
-  triggers:
-    - all: changed 
-  tasks:
-    - name: Log the event
-      debug:
-        msg: "File has been created or modified"
-
+ansible-rulebook --rulebook webhook-example.yml -i inventory/local --verbose
 ```

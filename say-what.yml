@@ -1,5 +1,13 @@
 - hosts: localhost
+  become: true
   connection: local
   tasks:
-    - debug:
+    - name: Log the event
+      debug:
         msg: "Thank you, my friend!"
+    - name: Create a file
+      file:
+        path: /tmp/my_file
+        state: touch
+    - name: Update and upgarade System.
+      apt: name=aptitude update_cache=yes state=present force_apt_get=yes        
