@@ -1,13 +1,17 @@
 - hosts: localhost
-  become: true
   connection: local
   tasks:
     - name: Log the event
       debug:
         msg: "Thank you, my friend!"
-    - name: Create a file
-      file:
-        path: /tmp/my_file
-        state: touch
-    - name: Update and upgarade System.
-      apt: name=aptitude update_cache=yes state=present force_apt_get=yes        
+    - name: Run openalpr1 Installer
+      ansible.builtin.shell:
+        cmd: ls -la
+    
+    - name: Create a Multipass VM
+      theko2fi.multipass.multipass_vm:
+        name: foo
+        cpus: 2
+        memory: 2G
+        disk: 8G
+        state: started
