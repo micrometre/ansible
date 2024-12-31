@@ -4,12 +4,13 @@
     - multipass
   tags: createVms
 
-- name: playbook for azure
+- name: playbook for vms
   hosts: microanpr
   become: True
   roles:
     - common
     - users
     - docker
-  tags: setupWeb
+    - nodejs
+  tags: setupVms
 
