@@ -1,4 +1,4 @@
-#### This code snippet demonstrates a basic workflow for setting up an event-driven system using Ansible Rulebook:
+#### Setting up an event-driven system using Ansible Rulebook:
 
 1. Install necessary software: Install Java, Python, pip3, and the required Ansible packages.
 
@@ -30,14 +30,17 @@ This will trigger the execution of the defined Ansible playbook, demonstrating a
       - Create a Multipass VM	 
 2. common 
       - Update and upgarade System  
-      - Install required system packages	TAGS: [setupVms]
-      users : Create a new regular user with sudo privileges	TAGS: [setupVms]
-      users : Set authorized key for remote user	TAGS: [setupVms]
-      users : allow 'user dell' to have passwordless sudo	TAGS: [setupVms]
-      docker : Install Docker packages.	TAGS: [setupVms]
-      docker : Install docker-compose-plugin (with downgrade option).	TAGS: [setupVms]
-
-
+      - Install required system packages	
+3. Users
+      - Create a new regular user with sudo privileges	
+      - Set authorized key for remote user	
+      - allow 'user dell' to have passwordless sudo	
+4. docker
+      - Install Docker packages.	
+      - Install docker-compose-plugin (with downgrade option).
+5. Nodejs
+      - Install NVM
+      - Install Node 
 
 #### note
 ###### [Getting Started with Event-Driven Ansible](https://www.redhat.com/en/technologies/management/ansible/trial?sc_cid=7013a000002w14FAAQ&gad_source=1&gclid=CjwKCAiApsm7BhBZEiwAvIu2X-PGQiSFMisp1sLDhVg4b_0aXsaGnVSlV_uEOtLSB61itGlKp_IVexoCeaAQAvD_BwE&gclsrc=aw.ds)
